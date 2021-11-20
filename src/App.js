@@ -1,11 +1,9 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import AircraftScheduler from './components/AircraftScheduler';
 
 function App() {
-  return (
-    <AircraftScheduler></AircraftScheduler>
-  );
+  return <AircraftScheduler />;
 }
 
 export default App;
