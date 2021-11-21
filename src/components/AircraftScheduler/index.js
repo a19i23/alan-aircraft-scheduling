@@ -1,35 +1,9 @@
 import React from 'react';
-import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import ColumnTitles from './ColumnTitles';
 import ColumnContent from './ColumnContent';
 import { Typography } from '@mui/material';
-
-export const StyledPaper = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  backgroundColor: 'lightblue',
-  color: theme.palette.text.secondary,
-  border: '3px solid grey',
-  borderRadius: '15px',
-  height: '60vh',
-  overflowY: 'auto',
-  '&::-webkit-scrollbar': {
-    width: '18px',
-  },
-  '&::-webkit-scrollbar-track': {
-    'margin-top': '5px',
-    'margin-bottom': '5px',
-  },
-  '&::-webkit-scrollbar-thumb': {
-    borderRadius: '10px',
-    backgroundColor: 'grey',
-    border: '3px solid lightblue',
-  },
-}));
 
 const AircraftScheduler = () => {
   const date = new Date();

@@ -5,7 +5,7 @@ import airplaneIcon from './../assets/airplane-outline.png';
 
 const Aircraft = ({ info }) => {
   return (
-    <Paper style={{ padding: '10px' }}>
+    <Paper style={{ padding: '10px', borderRadius: '15px' }}>
       <Box display="flex" justifyContent="space-around">
         <img src={airplaneIcon} alt="airplane" />
         <Box display="flex" flexDirection="column" justifyContent="center">

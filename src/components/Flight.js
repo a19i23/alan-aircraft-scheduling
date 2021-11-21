@@ -7,7 +7,9 @@ import airplaneLanding from '../assets/airplane-landing.png';
 const Flight = ({ info }) => {
   return (
     <>
-      <Paper style={{ padding: '10px', margin: '8px 0px' }}>
+      <Paper
+        style={{ padding: '10px', margin: '8px 0px', borderRadius: '15px' }}
+      >
         <Box flex>
           <Typography>Flight: {info.id}</Typography>
           <Box display="flex" justifyContent="space-around" alignItems="center">
