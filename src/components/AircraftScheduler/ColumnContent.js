@@ -2,11 +2,15 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 import { StyledPaper } from '.';
 import Aircraft from '../Aircraft';
+import Flight from '../Flight';
 import { useAircrafts } from '../../hooks/useAircrafts';
+import { useFlights } from '../../hooks/useFlights';
 
 const ColumnContent = (props) => {
   const { data: aircrafts } = useAircrafts();
-  console.log(aircrafts?.data);
+  const { data: flights } = useFlights();
+
+  console.log(flights?.data);
 
   return (
     <>
@@ -18,7 +22,11 @@ const ColumnContent = (props) => {
         </StyledPaper>
       </Grid>
       <Grid item xs={12} sm={4}>
-        <StyledPaper>xs=4</StyledPaper>
+        <StyledPaper>
+          {flights?.data?.map((flight) => (
+            <Flight info={flight} />
+          ))}
+        </StyledPaper>
       </Grid>
       <Grid item xs={12} sm={4}>
         <StyledPaper>xs=4</StyledPaper>

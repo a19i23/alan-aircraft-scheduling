@@ -16,6 +16,21 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
   border: '3px solid grey',
   borderRadius: '15px',
   height: '60vh',
+  overflowY: 'auto',
+  '&::-webkit-scrollbar': {
+    width: '18px',
+  },
+  '&::-webkit-scrollbar-track': {
+    'margin-top': '5px',
+    'margin-bottom': '5px',
+  },
+  '&:hover': {
+    '&::-webkit-scrollbar-thumb': {
+      borderRadius: '10px',
+      backgroundColor: 'grey',
+      border: '3px solid lightblue',
+    },
+  },
 }));
 
 const AircraftScheduler = () => {
