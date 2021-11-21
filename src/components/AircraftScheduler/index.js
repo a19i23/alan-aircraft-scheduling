@@ -24,12 +24,10 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
     'margin-top': '5px',
     'margin-bottom': '5px',
   },
-  '&:hover': {
-    '&::-webkit-scrollbar-thumb': {
-      borderRadius: '10px',
-      backgroundColor: 'grey',
-      border: '3px solid lightblue',
-    },
+  '&::-webkit-scrollbar-thumb': {
+    borderRadius: '10px',
+    backgroundColor: 'grey',
+    border: '3px solid lightblue',
   },
 }));
 
