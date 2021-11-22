@@ -13,9 +13,13 @@ const FLIGHT_LIMIT = 5;
 const ColumnContent = (props) => {
   const [page, setPage] = useState(1);
   const [totalFlights, setTotalFlights] = useState(0);
+  const [flightRotation, setFlightRotation] = useState({ rotation: [] });
+  const [flightRotationIds, setFlightRotationIds]
 
   const { data: aircrafts } = useAircrafts();
   const { data: flights } = useFlights(FLIGHT_LIMIT, page);
+
+  console.log(flightRotation);
 
   useEffect(() => {
     if (flights) {
@@ -42,7 +46,7 @@ const ColumnContent = (props) => {
       <Grid item xs={12} sm={4}>
         <StyledPaperColumn>
           {flights?.data?.map((flight) => (
-            <Flight info={flight} />
+            <Flight info={flight} setFlightRotation={setFlightRotation} />
           ))}
         </StyledPaperColumn>
         <Box display="flex" justifyContent="center">
