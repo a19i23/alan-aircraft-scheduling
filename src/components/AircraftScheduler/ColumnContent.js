@@ -1,25 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import Pagination from '@mui/material/Pagination';
-import { StyledPaperColumn } from './StyledPaperColumn';
+import { StyledPaperColumn } from '../StyledComponents';
 import Aircraft from '../Aircraft';
 import Flight from '../Flight';
 import { useAircrafts } from '../../hooks/useAircrafts';
 import { useFlights } from '../../hooks/useFlights';
 import { Box } from '@mui/system';
+import FlightRotation from '../FlightRotation';
 
 const FLIGHT_LIMIT = 5;
 
 const ColumnContent = (props) => {
   const [page, setPage] = useState(1);
   const [totalFlights, setTotalFlights] = useState(0);
-  const [flightRotation, setFlightRotation] = useState({ rotation: [] });
-  const [flightRotationIds, setFlightRotationIds]
+  const [flightRotation, setFlightRotation] = useState(new Map());
 
   const { data: aircrafts } = useAircrafts();
   const { data: flights } = useFlights(FLIGHT_LIMIT, page);
-
-  console.log(flightRotation);
 
   useEffect(() => {
     if (flights) {
@@ -32,22 +30,27 @@ const ColumnContent = (props) => {
     setPage(value);
   };
 
-  console.log(flights?.data);
-
   return (
     <>
       <Grid item xs={12} sm={4}>
         <StyledPaperColumn>
           {aircrafts?.data?.map((aircraft) => (
-            <Aircraft info={aircraft} />
+            <Aircraft key={aircraft.ident} info={aircraft} />
           ))}
         </StyledPaperColumn>
       </Grid>
       <Grid item xs={12} sm={4}>
         <StyledPaperColumn>
-          {flights?.data?.map((flight) => (
-            <Flight info={flight} setFlightRotation={setFlightRotation} />
-          ))}
+          {flights?.data?.map((flight) => {
+            return (
+              <Flight
+                key={flight.id}
+                info={flight}
+                setFlightRotation={setFlightRotation}
+                disabled={flightRotation.has(flight.id)}
+              />
+            );
+          })}
         </StyledPaperColumn>
         <Box display="flex" justifyContent="center">
           <Pagination
@@ -59,7 +62,11 @@ const ColumnContent = (props) => {
         </Box>
       </Grid>
       <Grid item xs={12} sm={4}>
-        <StyledPaperColumn>xs=4</StyledPaperColumn>
+        <StyledPaperColumn>
+          {Array.from(flightRotation).map(([key, value]) => (
+            <FlightRotation id={key} info={value} />
+          ))}
+        </StyledPaperColumn>
       </Grid>
     </>
   );

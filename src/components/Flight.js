@@ -1,38 +1,51 @@
 import React from 'react';
-import { Card, CardHeader, IconButton, Typography } from '@mui/material';
+import { CardHeader, IconButton, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import AddIcon from '@mui/icons-material/Add';
+
 import airplaneTakeOff from '../assets/airplane-take-off.png';
 import airplaneLanding from '../assets/airplane-landing.png';
+import {
+  StyledAddIcon,
+  StyledCheckIcon,
+  StyledIconButton,
+  StyledCard,
+} from './StyledComponents';
 
-const Flight = ({ info, setFlightRotation }) => {
+const Flight = ({ info, setFlightRotation, disabled }) => {
   const handleAddFlight = () => {
-    setFlightRotation((prev) => ({
-      rotation: [
-        ...prev.rotation,
-        {
-          id: info.id,
-          arrivalTime: info.arrivaltime,
-          readadbleDeparture: info.readable_departure,
-          readableArrival: info.readable_arrival,
-          origin: info.origin,
-          destination: info.destination,
-        },
-      ],
-    }));
+    setFlightRotation((prev) => {
+      const newMap = new Map(prev);
+      newMap.set(info.id, {
+        arrivalTime: info.arrivaltime,
+        readableDeparture: info.readable_departure,
+        readableArrival: info.readable_arrival,
+        origin: info.origin,
+        destination: info.destination,
+      });
+      return newMap;
+    });
+  };
+
+  const handleIcon = () => {
+    if (disabled) {
+      return (
+        <StyledIconButton>
+          <StyledCheckIcon />
+        </StyledIconButton>
+      );
+    }
+    return (
+      <IconButton onClick={handleAddFlight}>
+        <StyledAddIcon />
+      </IconButton>
+    );
   };
 
   return (
     <>
-      <Card
-        style={{ padding: '10px', margin: '8px 0px', borderRadius: '15px' }}
-      >
+      <StyledCard>
         <CardHeader
-          action={
-            <IconButton onClick={handleAddFlight}>
-              <AddIcon />
-            </IconButton>
-          }
+          action={handleIcon()}
           title={`Flight: ${info.id}`}
           titleTypographyProps={{ variant: 'h6' }}
         />
@@ -59,7 +72,7 @@ const Flight = ({ info, setFlightRotation }) => {
             <Typography>{info.readable_arrival}</Typography>
           </Box>
         </Box>
-      </Card>
+      </StyledCard>
     </>
   );
 };
