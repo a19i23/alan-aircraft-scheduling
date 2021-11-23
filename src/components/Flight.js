@@ -12,10 +12,11 @@ import {
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const Flight = ({ info, setFlightRotation, disabled }) => {
-  const handleAddFlight = (departTime) => {
+  const handleAddFlight = () => {
     setFlightRotation((prev) => {
       const newMap = new Map(prev);
       newMap.set(info.id, {
+        departureTime: info.departuretime,
         arrivalTime: info.arrivaltime,
         readableDeparture: info.readable_departure,
         readableArrival: info.readable_arrival,

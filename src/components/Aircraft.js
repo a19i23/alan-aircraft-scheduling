@@ -1,17 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import airplaneIcon from './../assets/airplane-outline.png';
 import { StyledCard } from './StyledComponents';
 
-const Aircraft = ({ info }) => {
+const SECONDS_IN_DAY = 86400;
+
+const Aircraft = ({ info, flightRotation }) => {
+  const [utilization, setUtilization] = useState(0);
+
+  useEffect(() => {
+    if (flightRotation) {
+      const aircraftRotation = Array.from(flightRotation.values());
+      console.log(aircraftRotation);
+      const totalUtil = aircraftRotation.reduce((accumulator, current) => {
+        const currentTime = current.arrivalTime - current.departureTime;
+        return Number(accumulator) + Number(currentTime);
+      }, []);
+      setUtilization(Math.round((totalUtil / SECONDS_IN_DAY) * 100));
+    }
+  }, [flightRotation]);
   return (
     <StyledCard>
       <Box display="flex" justifyContent="space-around">
         <img src={airplaneIcon} alt="airplane" />
         <Box display="flex" flexDirection="column" justifyContent="center">
           <Typography>{info.ident}</Typography>
-          <Typography> ({Math.round((10 / 24) * 100)})%</Typography>
+          <Typography> ({utilization}%)</Typography>
         </Box>
       </Box>
     </StyledCard>

@@ -50,7 +50,11 @@ const ColumnContent = (props) => {
       <Grid item xs={12} sm={4}>
         <StyledPaperColumn>
           {aircrafts?.data?.map((aircraft) => (
-            <Aircraft key={aircraft.ident} info={aircraft} />
+            <Aircraft
+              key={aircraft.ident}
+              info={aircraft}
+              flightRotation={flightRotation}
+            />
           ))}
         </StyledPaperColumn>
       </Grid>
