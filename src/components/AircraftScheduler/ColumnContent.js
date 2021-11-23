@@ -21,7 +21,7 @@ const ColumnContent = (props) => {
 
   useEffect(() => {
     if (flights) {
-      const totalPages = Math.floor(flights.pagination.total / FLIGHT_LIMIT);
+      const totalPages = Math.ceil(flights.pagination.total / FLIGHT_LIMIT);
       setTotalFlights(totalPages);
     }
   }, [flights]);
@@ -46,6 +46,7 @@ const ColumnContent = (props) => {
               <Flight
                 key={flight.id}
                 info={flight}
+                flightRotation={flightRotation}
                 setFlightRotation={setFlightRotation}
                 disabled={flightRotation.has(flight.id)}
               />
