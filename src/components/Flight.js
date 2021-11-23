@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CardHeader, IconButton, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
 import airplaneTakeOff from '../assets/airplane-take-off.png';
 import airplaneLanding from '../assets/airplane-landing.png';
 import {
@@ -13,41 +11,22 @@ import {
 } from './StyledComponents';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-const Flight = ({ info, flightRotation, setFlightRotation, disabled }) => {
-  const [openSnackbar, setOpenSnackbar] = useState(false);
-
+const Flight = ({ info, setFlightRotation, disabled }) => {
   const handleAddFlight = (departTime) => {
-    const lastFlight = Array.from(flightRotation.values()).pop();
-
-    if (
-      flightRotation.size === 0 ||
-      departTime >= lastFlight.arrivalTime + 1200
-    ) {
-      setFlightRotation((prev) => {
-        const newMap = new Map(prev);
-        newMap.set(info.id, {
-          arrivalTime: info.arrivaltime,
-          readableDeparture: info.readable_departure,
-          readableArrival: info.readable_arrival,
-          origin: info.origin,
-          destination: info.destination,
-        });
-        return newMap;
+    setFlightRotation((prev) => {
+      const newMap = new Map(prev);
+      newMap.set(info.id, {
+        arrivalTime: info.arrivaltime,
+        readableDeparture: info.readable_departure,
+        readableArrival: info.readable_arrival,
+        origin: info.origin,
+        destination: info.destination,
       });
-    } else {
-      setOpenSnackbar(true);
-    }
+      return newMap;
+    });
   };
 
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-
-    setOpenSnackbar(false);
-  };
-
-  const handleIcon = (departTime) => {
+  const handleIcon = () => {
     if (disabled) {
       return (
         <StyledIconButton>
@@ -56,7 +35,7 @@ const Flight = ({ info, flightRotation, setFlightRotation, disabled }) => {
       );
     }
     return (
-      <IconButton onClick={() => handleAddFlight(departTime)}>
+      <IconButton onClick={handleAddFlight}>
         <StyledAddIcon />
       </IconButton>
     );
@@ -66,7 +45,7 @@ const Flight = ({ info, flightRotation, setFlightRotation, disabled }) => {
     <>
       <StyledCard>
         <CardHeader
-          action={handleIcon(info.departuretime)}
+          action={handleIcon()}
           title={`Flight: ${info.id}`}
           titleTypographyProps={{ variant: 'h6' }}
         />
@@ -94,17 +73,6 @@ const Flight = ({ info, flightRotation, setFlightRotation, disabled }) => {
           </Box>
         </Box>
       </StyledCard>
-      <Snackbar
-        open={openSnackbar}
-        autoHideDuration={10000}
-        onClose={handleClose}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-      >
-        <Alert onClose={handleClose} severity="warning" sx={{ width: '100%' }}>
-          Next flight departure time must be at least 20 minutes after previous
-          flight arrival time.
-        </Alert>
-      </Snackbar>
     </>
   );
 };

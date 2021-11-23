@@ -4,7 +4,6 @@ import { Box } from '@mui/system';
 import { StyledCard } from './StyledComponents';
 
 const FlightRotation = ({ id, info }) => {
-  console.log(id, info);
   return (
     <StyledCard>
       <CardHeader
