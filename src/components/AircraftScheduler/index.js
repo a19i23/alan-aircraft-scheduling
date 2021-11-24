@@ -1,7 +1,6 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import ColumnTitles from './ColumnTitles';
 import ColumnContent from './ColumnContent';
 import { Typography } from '@mui/material';
 
@@ -16,7 +15,7 @@ const AircraftScheduler = () => {
           item
           xs={12}
           style={{
-            height: '100px',
+            height: '75px',
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'center',
@@ -24,7 +23,6 @@ const AircraftScheduler = () => {
         >
           <Typography>&lt; {date.toDateString()} &gt;</Typography>
         </Grid>
-        <ColumnTitles />
         <ColumnContent />
       </Grid>
     </Box>

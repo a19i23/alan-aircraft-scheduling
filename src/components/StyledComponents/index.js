@@ -1,4 +1,4 @@
-import { Card, IconButton } from '@mui/material';
+import { Card, IconButton, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import AddIcon from '@mui/icons-material/Add';
@@ -52,4 +52,9 @@ export const StyledCard = styled(Card)(({ theme }) => ({
   padding: '10px',
   margin: '8px 0px',
   borderRadius: '15px',
+}));
+
+export const StyledTypography = styled(Typography)(() => ({
+  textAlign: 'center',
+  padding: '5px',
 }));

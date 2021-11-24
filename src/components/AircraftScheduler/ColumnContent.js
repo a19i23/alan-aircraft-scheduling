@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { Typography } from '@mui/material';
+import { Box } from '@mui/system';
 import Grid from '@mui/material/Grid';
 import Pagination from '@mui/material/Pagination';
-import { StyledPaperColumn } from '../StyledComponents';
+import { StyledPaperColumn, StyledTypography } from '../StyledComponents';
 import Aircraft from '../Aircraft';
 import Flight from '../Flight';
 import { useAircrafts } from '../../hooks/useAircrafts';
 import { useFlights } from '../../hooks/useFlights';
-import { Box } from '@mui/system';
 import FlightRotation from '../FlightRotation';
-import { Typography } from '@mui/material';
 
 const FLIGHT_LIMIT = 25;
 
@@ -48,6 +48,7 @@ const ColumnContent = (props) => {
   return (
     <>
       <Grid item xs={12} sm={4}>
+        <StyledTypography>Aircrafts</StyledTypography>
         <StyledPaperColumn>
           {aircrafts?.data?.map((aircraft) => (
             <Aircraft
@@ -59,6 +60,9 @@ const ColumnContent = (props) => {
         </StyledPaperColumn>
       </Grid>
       <Grid item xs={12} sm={4}>
+        <StyledTypography style={{ fontWeight: 'bold' }}>
+          Rotation {aircrafts?.data[0]?.ident}
+        </StyledTypography>
         <StyledPaperColumn>
           {filteredFlights?.data?.length > 0 ? (
             filteredFlights?.data?.map((flight) => (
@@ -75,7 +79,7 @@ const ColumnContent = (props) => {
             </Typography>
           )}
         </StyledPaperColumn>
-        <Box display="flex" justifyContent="center">
+        <Box display="flex" justifyContent="center" marginTop="5px">
           <Pagination
             size="small"
             count={totalFlights}
@@ -85,11 +89,15 @@ const ColumnContent = (props) => {
         </Box>
       </Grid>
       <Grid item xs={12} sm={4}>
+        <StyledTypography>Flights</StyledTypography>
         <StyledPaperColumn>
           {Array.from(flightRotation).map(([key, value]) => (
             <FlightRotation id={key} info={value} />
           ))}
         </StyledPaperColumn>
+      </Grid>
+      <Grid item xs={12}>
+        stuff goes here
       </Grid>
     </>
   );
