@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import AddIcon from '@mui/icons-material/Add';
 import CheckIcon from '@mui/icons-material/Check';
+import Slider from '@mui/material/Slider';
 
 export const StyledPaperColumn = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -57,4 +58,19 @@ export const StyledCard = styled(Card)(({ theme }) => ({
 export const StyledTypography = styled(Typography)(() => ({
   textAlign: 'center',
   padding: '5px',
+}));
+
+export const StyledSlider = styled(Slider)(() => ({
+  '.MuiSlider-thumb': {
+    color: 'transparent',
+    height: '0px',
+    width: '0px',
+  },
+}));
+
+export const GaugeContainer = styled(Paper)(({ theme }) => ({
+  width: 'inherit',
+  height: '35px',
+  borderRadius: '20px',
+  border: '1px solid grey',
 }));

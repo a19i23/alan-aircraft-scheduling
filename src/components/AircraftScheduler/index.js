@@ -15,7 +15,7 @@ const AircraftScheduler = () => {
           item
           xs={12}
           style={{
-            height: '75px',
+            height: '50px',
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'center',

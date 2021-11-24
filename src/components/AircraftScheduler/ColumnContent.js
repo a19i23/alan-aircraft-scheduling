@@ -9,6 +9,8 @@ import Flight from '../Flight';
 import { useAircrafts } from '../../hooks/useAircrafts';
 import { useFlights } from '../../hooks/useFlights';
 import FlightRotation from '../FlightRotation';
+import LinearTime from '../LinearTime';
+import TimeGauge from '../TimeGauge';
 
 const FLIGHT_LIMIT = 25;
 
@@ -60,9 +62,7 @@ const ColumnContent = (props) => {
         </StyledPaperColumn>
       </Grid>
       <Grid item xs={12} sm={4}>
-        <StyledTypography style={{ fontWeight: 'bold' }}>
-          Rotation {aircrafts?.data[0]?.ident}
-        </StyledTypography>
+        <StyledTypography>Flights</StyledTypography>
         <StyledPaperColumn>
           {filteredFlights?.data?.length > 0 ? (
             filteredFlights?.data?.map((flight) => (
@@ -89,15 +89,31 @@ const ColumnContent = (props) => {
         </Box>
       </Grid>
       <Grid item xs={12} sm={4}>
-        <StyledTypography>Flights</StyledTypography>
+        <StyledTypography>
+          Rotation {aircrafts?.data[0]?.ident}
+        </StyledTypography>
         <StyledPaperColumn>
           {Array.from(flightRotation).map(([key, value]) => (
             <FlightRotation id={key} info={value} />
           ))}
         </StyledPaperColumn>
       </Grid>
-      <Grid item xs={12}>
-        stuff goes here
+      <Grid
+        item
+        xs={12}
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+      >
+        <Box
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          width="100%"
+        >
+          <TimeGauge />
+          <LinearTime />
+        </Box>
       </Grid>
     </>
   );
