@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import ColumnContent from './ColumnContent';
 import { Typography } from '@mui/material';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 const AircraftScheduler = () => {
   const date = new Date();
@@ -21,7 +23,9 @@ const AircraftScheduler = () => {
             justifyContent: 'center',
           }}
         >
-          <Typography>&lt; {date.toDateString()} &gt;</Typography>
+          <ChevronLeftIcon />
+          <Typography>{date.toDateString()}</Typography>
+          <ChevronRightIcon />
         </Grid>
         <ColumnContent />
       </Grid>

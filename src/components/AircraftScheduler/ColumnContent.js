@@ -13,6 +13,7 @@ import LinearTime from '../LinearTime';
 import TimeGauge from '../TimeGauge';
 
 const FLIGHT_LIMIT = 25;
+export const SECONDS_IN_DAY = 86400;
 
 const ColumnContent = (props) => {
   const [page, setPage] = useState(1);
@@ -111,7 +112,7 @@ const ColumnContent = (props) => {
           justifyContent="center"
           width="100%"
         >
-          <TimeGauge />
+          <TimeGauge flightRotation={Array.from(flightRotation.values())} />
           <LinearTime />
         </Box>
       </Grid>

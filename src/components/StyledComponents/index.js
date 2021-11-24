@@ -69,8 +69,9 @@ export const StyledSlider = styled(Slider)(() => ({
 }));
 
 export const GaugeContainer = styled(Paper)(({ theme }) => ({
+  display: 'inherit',
   width: 'inherit',
   height: '35px',
-  borderRadius: '20px',
   border: '1px solid grey',
+  backgroundColor: 'grey',
 }));

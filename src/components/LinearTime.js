@@ -8,8 +8,16 @@ const marks = [
     label: '00:00',
   },
   {
+    value: 25,
+    label: '06:00',
+  },
+  {
     value: 50,
     label: '12:00',
+  },
+  {
+    value: 75,
+    label: '18:00',
   },
   {
     value: 100,

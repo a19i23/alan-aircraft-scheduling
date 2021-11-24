@@ -3,8 +3,7 @@ import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import airplaneIcon from './../assets/airplane-outline.png';
 import { StyledCard } from './StyledComponents';
-
-const SECONDS_IN_DAY = 86400;
+import { SECONDS_IN_DAY } from './AircraftScheduler/ColumnContent';
 
 const Aircraft = ({ info, flightRotation }) => {
   const [utilization, setUtilization] = useState(0);
@@ -12,7 +11,6 @@ const Aircraft = ({ info, flightRotation }) => {
   useEffect(() => {
     if (flightRotation) {
       const aircraftRotation = Array.from(flightRotation.values());
-      console.log(aircraftRotation);
       const totalUtil = aircraftRotation.reduce((accumulator, current) => {
         const currentTime = current.arrivalTime - current.departureTime;
         return Number(accumulator) + Number(currentTime);
