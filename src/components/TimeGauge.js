@@ -1,8 +1,12 @@
 import React, { useRef } from 'react';
 import Box from '@mui/material/Box';
-import { GaugeContainer } from './StyledComponents';
+import {
+  GaugeContainer,
+  IdleSection,
+  ServiceSection,
+  TurnaroundSection,
+} from './StyledComponents';
 import { SECONDS_IN_DAY } from './AircraftScheduler/ColumnContent';
-import Paper from '@mui/material/Paper';
 
 const TimeGauge = ({ flightRotation }) => {
   const ref = useRef(0);
@@ -25,24 +29,8 @@ const TimeGauge = ({ flightRotation }) => {
             ref.current = arrivalTime;
             return (
               <>
-                <Paper
-                  style={{
-                    width: `${percentOfFirstIdle}%`,
-                    height: 'inherit',
-                    backgroundColor: 'grey',
-                    border: '1px solid grey',
-                    boxShadow: 'none',
-                  }}
-                />
-                <Paper
-                  style={{
-                    width: `${percentOfDay}%`,
-                    height: 'inherit',
-                    backgroundColor: 'green',
-                    border: '1px solid green',
-                    boxShadow: 'none',
-                  }}
-                />
+                <IdleSection width={percentOfFirstIdle} />
+                <ServiceSection width={percentOfDay} />
               </>
             );
           }
@@ -56,24 +44,8 @@ const TimeGauge = ({ flightRotation }) => {
 
           return (
             <>
-              <Paper
-                style={{
-                  width: `${percentTurnaround}%`,
-                  height: 'inherit',
-                  backgroundColor: 'purple',
-                  border: '1px solid purple',
-                  boxShadow: 'none',
-                }}
-              />
-              <Paper
-                style={{
-                  width: `${percentOfDay}%`,
-                  height: 'inherit',
-                  backgroundColor: 'green',
-                  border: '1px solid green',
-                  boxShadow: 'none',
-                }}
-              />
+              <TurnaroundSection width={percentTurnaround} />
+              <ServiceSection width={percentOfDay} />
             </>
           );
         })}

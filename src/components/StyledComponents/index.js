@@ -72,6 +72,30 @@ export const GaugeContainer = styled(Paper)(({ theme }) => ({
   display: 'inherit',
   width: 'inherit',
   height: '35px',
-  border: '1px solid grey',
-  backgroundColor: 'grey',
+  border: '1px solid lightgrey',
+  backgroundColor: 'lightgrey',
+}));
+
+export const IdleSection = styled(Paper)(({ theme, width }) => ({
+  width: `${width}%`,
+  height: 'inherit',
+  backgroundColor: 'lightgrey',
+  border: '1px solid lightgrey',
+  boxShadow: 'none',
+}));
+
+export const ServiceSection = styled(Paper)(({ theme, width }) => ({
+  width: `${width}%`,
+  height: 'inherit',
+  backgroundColor: 'green',
+  border: '1px solid green',
+  boxShadow: 'none',
+}));
+
+export const TurnaroundSection = styled(Paper)(({ theme, width }) => ({
+  width: `${width}%`,
+  height: 'inherit',
+  backgroundColor: 'purple',
+  border: '1px solid purple',
+  boxShadow: 'none',
 }));
