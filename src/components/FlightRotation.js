@@ -20,7 +20,7 @@ const FlightRotation = ({ id, info }) => {
         </Box>
         <img
           src={airplaneTakeOff}
-          alt="airplane takeoff"
+          alt="airplane-takeoff"
           height="40px"
           width="40px"
         />

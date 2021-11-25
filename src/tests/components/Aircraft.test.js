@@ -2,20 +2,11 @@ import { render, screen } from '@testing-library/react';
 import Aircraft from '../../components/Aircraft';
 import { GlobalWrapper } from '../testUtils';
 import { Aircrafts } from '../../mocks/data/Aircrafts';
-
-const flightRotation = new Map();
-flightRotation.set('id123', {
-  arrivalTime: 26100,
-  departureTime: 21600,
-  destination: 'LFMN',
-  origin: 'LFSB',
-  readableArrival: '07:15',
-  readableDeparture: '06:00',
-});
+import { FlightRotation } from '../../mocks/data/FlightRotation';
 
 test('renders aircraft component', async () => {
   render(
-    <Aircraft info={Aircrafts.data[0]} flightRotation={flightRotation} />,
+    <Aircraft info={Aircrafts.data[0]} flightRotation={FlightRotation} />,
     {
       wrapper: GlobalWrapper,
     },
