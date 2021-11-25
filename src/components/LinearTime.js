@@ -25,7 +25,7 @@ const marks = [
   },
 ];
 
-const LinearTime = (props) => {
+const LinearTime = () => {
   return (
     <Box width="inherit">
       <StyledSlider defaultValue={100} valueLabelDisplay="off" marks={marks} />
