@@ -112,7 +112,7 @@ const ColumnContent = () => {
           justifyContent="center"
           width="100%"
         >
-          <TimeGauge flightRotation={Array.from(flightRotation.values())} />
+          <TimeGauge flightRotation={flightRotation} />
           <LinearTime />
         </Box>
       </Grid>

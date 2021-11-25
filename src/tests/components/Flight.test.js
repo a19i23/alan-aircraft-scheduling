@@ -3,7 +3,7 @@ import Flight from '../../components/Flight';
 import { GlobalWrapper } from '../testUtils';
 import { Flights } from '../../mocks/data/Flights';
 
-test('renders aircraft component', async () => {
+test('renders Flight component', async () => {
   render(<Flight info={Flights.data[1]} />, {
     wrapper: GlobalWrapper,
   });

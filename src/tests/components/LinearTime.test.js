@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import LinearTime from '../../components/LinearTime';
 import { GlobalWrapper } from '../testUtils';
 
-test('renders aircraft component', async () => {
+test('renders LinearTime component', async () => {
   render(<LinearTime />, {
     wrapper: GlobalWrapper,
   });

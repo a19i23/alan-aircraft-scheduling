@@ -1,10 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import FlightRotation from '../../components/FlightRotation';
 import { GlobalWrapper } from '../testUtils';
-import { Flights } from '../../mocks/data/Flights';
 import { FlightRotation as Rotation } from '../../mocks/data/FlightRotation';
 
-test('renders aircraft component', async () => {
+test('renders FlightRotation component', async () => {
   const keys = Array.from(Rotation.keys());
   const values = Array.from(Rotation.values());
 

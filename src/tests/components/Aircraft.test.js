@@ -4,7 +4,7 @@ import { GlobalWrapper } from '../testUtils';
 import { Aircrafts } from '../../mocks/data/Aircrafts';
 import { FlightRotation } from '../../mocks/data/FlightRotation';
 
-test('renders aircraft component', async () => {
+test('renders Aircraft component', async () => {
   render(
     <Aircraft info={Aircrafts.data[0]} flightRotation={FlightRotation} />,
     {

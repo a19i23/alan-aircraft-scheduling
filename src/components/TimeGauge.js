@@ -13,7 +13,7 @@ const TimeGauge = ({ flightRotation }) => {
   return (
     <Box width="inherit" display="flex" flexDirection="row">
       <GaugeContainer>
-        {flightRotation.map((flight, index) => {
+        {Array.from(flightRotation.values()).map((flight, index) => {
           const { departureTime, arrivalTime } = flight;
 
           // calculate for currentFlight
@@ -29,8 +29,14 @@ const TimeGauge = ({ flightRotation }) => {
             ref.current = arrivalTime;
             return (
               <>
-                <IdleSection width={percentOfFirstIdle} />
-                <ServiceSection width={percentOfDay} />
+                <IdleSection
+                  data-testId="zero-idle"
+                  width={percentOfFirstIdle}
+                />
+                <ServiceSection
+                  data-testId="first-service"
+                  width={percentOfDay}
+                />
               </>
             );
           }

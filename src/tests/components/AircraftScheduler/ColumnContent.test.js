@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import ColumnContent from '../../../components/AircraftScheduler/ColumnContent';
 import { GlobalWrapper } from '../../testUtils';
 
-test('renders column content view', async () => {
+test('renders ColumnContent view', async () => {
   render(<ColumnContent />, { wrapper: GlobalWrapper });
 
   const aircraftHeader = screen.getByText(/Aircrafts/i);
