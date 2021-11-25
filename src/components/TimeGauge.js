@@ -30,11 +30,11 @@ const TimeGauge = ({ flightRotation }) => {
             return (
               <>
                 <IdleSection
-                  data-testId="zero-idle"
+                  data-testid="zero-idle"
                   width={percentOfFirstIdle}
                 />
                 <ServiceSection
-                  data-testId="first-service"
+                  data-testid="first-service"
                   width={percentOfDay}
                 />
               </>

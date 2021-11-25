@@ -7,10 +7,7 @@ export const handlers = [
     return res(ctx.json(Aircrafts));
   }),
 
-  rest.get(
-    'https://infinite-dawn-93085.herokuapp.com/flights',
-    (req, res, ctx) => {
-      return res(ctx.json(Flights));
-    },
-  ),
+  rest.get('*/flights', (req, res, ctx) => {
+    return res(ctx.json(Flights));
+  }),
 ];
