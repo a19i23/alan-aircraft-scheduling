@@ -1,12 +1,13 @@
 import { SWRConfig } from 'swr';
 import './App.css';
 import AircraftScheduler from './components/AircraftScheduler';
-
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+import { SWRFetcher } from './SwrFetcher';
 
 function App() {
   return (
-    <SWRConfig value={{ fetcher }}>
+    <SWRConfig
+      value={{ fetcher: SWRFetcher, suspense: false, revalidateOnFocus: false }}
+    >
       <AircraftScheduler />
     </SWRConfig>
   );

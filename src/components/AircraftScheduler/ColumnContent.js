@@ -15,7 +15,7 @@ import TimeGauge from '../TimeGauge';
 const FLIGHT_LIMIT = 25;
 export const SECONDS_IN_DAY = 86400;
 
-const ColumnContent = (props) => {
+const ColumnContent = () => {
   const [page, setPage] = useState(1);
   const [totalFlights, setTotalFlights] = useState(0);
   const [flightRotation, setFlightRotation] = useState(new Map());

@@ -21,7 +21,7 @@ const Aircraft = ({ info, flightRotation }) => {
   return (
     <StyledCard>
       <Box display="flex" justifyContent="space-around">
-        <img src={airplaneIcon} alt="airplane" />
+        <img src={airplaneIcon} alt="airplane-icon" />
         <Box display="flex" flexDirection="column" justifyContent="center">
           <Typography>{info.ident}</Typography>
           <Typography> ({utilization}%)</Typography>
