@@ -35,7 +35,7 @@ const Flight = ({ info, setFlightRotation, disabled }) => {
       );
     }
     return (
-      <IconButton onClick={handleAddFlight}>
+      <IconButton onClick={handleAddFlight} data-testid="add-icon">
         <StyledAddIcon />
       </IconButton>
     );
@@ -54,7 +54,10 @@ const Flight = ({ info, setFlightRotation, disabled }) => {
             <Typography>{info.origin}</Typography>
             <Typography>{info.readable_departure}</Typography>
           </Box>
-          <ArrowForwardIcon style={{ color: 'grey' }} />
+          <ArrowForwardIcon
+            style={{ color: 'grey' }}
+            data-testid="arrow-forward-icon"
+          />
           <Box>
             <Typography>{info.destination}</Typography>
             <Typography>{info.readable_arrival}</Typography>
